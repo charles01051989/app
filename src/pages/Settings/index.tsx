@@ -27,3 +27,4 @@ const Settings = () => {
     </S.Settings>
   );
 };
+export default Settings;
