@@ -22,7 +22,7 @@ const CheckoutSection = () => {
           </S.CheckoutSectionPaymentFormTitle>
           <S.PaymentForm>
             <S.PaymentFormCheckbox>
-              <CheckBoxIcon active={false} value="Cartão" icon={<Card/>}/>
+              <CheckBoxIcon active={true} value="Cartão" icon={<Card/>}/>
               <CheckBoxIcon active={false} value="Dinheiro" icon={<Cash/>}/>
             </S.PaymentFormCheckbox>
             <>
