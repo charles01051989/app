@@ -1,4 +1,5 @@
 import Menu from "components/Menu";
+import NavColumn from "components/NavColumn";
 import { navigationItems } from "data/navigation";
 import { Outlet } from "react-router-dom";
 import { RoutePath } from "types/routes";
@@ -14,7 +15,8 @@ const Settings = () => {
         </header>
         <S.SettingsContent>
           <S.SettingsContentSidebar>
-            {"Componente NavColumn"}
+
+            <NavColumn activeRoute={ RoutePath.SETTINGS_TABLES }/>
           </S.SettingsContentSidebar>
           <S.SettingsContentBox>
             <S.SettingsContentBoxEmpty>

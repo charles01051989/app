@@ -8,8 +8,8 @@ const Router = () => {
     return (
         <Routes>
             <Route path={RoutePath.LOGIN} element={<Login />} />
-            <Route path={RoutePath.HOME} element={<Home />} />
-            <Route path={RoutePath.SETTINGS} element={<Settings/>} />
+            <Route path={RoutePath.HOME} element={<Settings />} />
+            {/* <Route path={RoutePath.SETTINGS} element={<Settings/>} /> */}
         </Routes>
     );
 }
