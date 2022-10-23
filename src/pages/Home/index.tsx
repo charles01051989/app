@@ -10,11 +10,14 @@ import OrderDetails from "components/OrderDetails";
 import Overlay from "components/Overlay";
 import CheckoutSection from "components/CheckoutSection";
 import { useNavigate } from "react-router-dom";
-import { products } from "mocks/products";
 import { ProductResponse } from "types/Product";
 import { OrderType } from "types/orderType";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { OrderItemType } from "types/OrderItemType";
+import { useQuery } from "@tanstack/react-query";
+import { QueryKey } from "types/QueryKey";
+import { ProductService } from "services/ProductService";
+import { TableService } from "services/TableService";
 
 const Home = () => {
   const dateDescription = DateTime.now().toLocaleString({
@@ -23,6 +26,21 @@ const Home = () => {
   });
 
   const navigate = useNavigate();
+
+  const { data: productsData } = useQuery(
+    [QueryKey.PRODUCTS],
+    ProductService.getLista
+  );
+  
+    // Após a atualização da biblioteca react query (sendo utilizada como @tanstack/react-query), o método useQuery agora só aceita array como primeiro parâmetro ao invés de string como mostrado no vídeo
+  const { data: tablesData } = useQuery(
+    [QueryKey.TABLES],
+    TableService.getLista
+  );
+  
+  const tables = tablesData || [];
+
+  const [products, setProducts] = useState<ProductResponse[]>([]);
 
   const [activeOrderType, setActiverOrderType] = useState(
     OrderType.COMER_NO_LOCAL
@@ -49,6 +67,10 @@ const Home = () => {
     const filtered = orders.filter((i) => i.product.id != id);
     setOrders(filtered);
   };
+
+  useEffect(() => {
+    setProducts(productsData || []);
+  }, [productsData]);
 
   return (
     <S.Home>
@@ -78,7 +100,7 @@ const Home = () => {
             <b>Pizzas</b>
           </S.HomeProductTitle>
           <S.HomeProductList>
-            <ProductItemList onSelectTable={setSelectedTable}>
+            <ProductItemList tables={tables} onSelectTable={setSelectedTable}>
               {Boolean(products.length) &&
                 products.map((product, index) => (
                   <ProductItem
