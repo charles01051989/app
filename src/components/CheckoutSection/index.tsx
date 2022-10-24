@@ -90,7 +90,7 @@ const CheckoutSection = ({ orders, onOrdersChange, onChangeActiveOrderType, acti
                             <>
                                 <S.PaymentFormGroup>
                                     <label htmlFor="titular">Titular do cartão</label>
-                                    <input type="text" name="titular" id="titular" placeholder="Wheslley Rimar" />
+                                    <input type="text" name="titular" id="titular" placeholder="Charles Marques" />
                                 </S.PaymentFormGroup>
 
                                 <S.PaymentFormGroup>

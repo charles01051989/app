@@ -6,7 +6,7 @@ import { user } from "./user";
 
 
 export const endpoint = {
-    baseUrl: "https://pizza-fresh-server.herokuapp.com",
+    baseUrl: "https://pizza-fresh-server-production-f630.up.railway.app",
     ...auth,
     ...user,
     ...order,
